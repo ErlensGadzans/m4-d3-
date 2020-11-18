@@ -28,6 +28,13 @@ body {
     rgba(46, 106, 221, 0.9750174190221208) 100%
   );
 }
-.btn {
-  background-color: transtparent !important;
+
+.card-img-top {
+  height: 300px;
+}
+.card button {
+}
+.card-title {
+  font-size: 18px;
+  height: 120px;
 }
