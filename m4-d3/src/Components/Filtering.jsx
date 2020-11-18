@@ -76,7 +76,10 @@ class Home extends React.Component {
       this.setState({ books: books[category].slice(0, 12) });
     }
   };
-
+  selectNewBook = (book) => {
+    // console.log("book selected", book);
+    this.setState({ selectedBook: book });
+  };
   render() {
     return (
       <div>
@@ -87,7 +90,7 @@ class Home extends React.Component {
             calling extra attention to featured content or information.
           </p>
           <p>
-            <Button variant="primary">Learn more</Button>
+            <Button>Learn more</Button>
           </p>
         </Jumbotron>
         <Container>
@@ -117,20 +120,22 @@ class Home extends React.Component {
               onChange={(e) => this.handleSearchQuery(e.target.value)}
             />
           </InputGroup>
-          <Row>
+          <Row xs={1} sm={2} md={4} lg={5} xl={6}>
             {this.state.books ? (
               this.state.books.map((book) => {
                 return (
-                  <Col xs={6} key={book.asin}>
-                    <Card style={{ width: "18rem" }}>
-                      <Card.Img variant="top" src={book.img} />
-                      <Card.Body>
-                        <Card.Title>{book.title}</Card.Title>
-                        <Card.Text>€{book.price}</Card.Text>
-                        <Button variant="primary">Go somewhere</Button>
-                      </Card.Body>
-                    </Card>
-                  </Col>
+                  <Card style={{ width: "18rem" }}>
+                    <Card.Img
+                      variant="top"
+                      src={book.img}
+                      onClick={() => this.selectNewBook(book)}
+                    />
+                    <Card.Body>
+                      <Card.Title>{book.title}</Card.Title>
+                      <Card.Text>€{book.price}</Card.Text>
+                      <Button>Go somewhere</Button>
+                    </Card.Body>
+                  </Card>
                 );
               })
             ) : (
